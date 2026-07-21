@@ -49,6 +49,8 @@ Git hooks (Husky): Conventional Commits on `commit-msg`; lint-staged on `pre-com
 
 ## Releasing
 
+The **Version Packages** PR is opened automatically by GitHub Actions when changesets land on `main`.
+
 1. Merge PRs that include changesets into `main`.
 2. The **Release** workflow opens or updates a **Version Packages** PR (bumps all packages together, updates each package `CHANGELOG.md`).
 3. Review and merge the Version Packages PR.
