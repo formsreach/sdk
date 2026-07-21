@@ -2,6 +2,8 @@
 
 Vue and Nuxt composable for [FormsReach](https://formsreach.com).
 
+For AI coding agents, see [AGENTS.md](./AGENTS.md) (composable API, form binding, do/don't).
+
 ```bash
 npm install @formsreach/vue
 ```

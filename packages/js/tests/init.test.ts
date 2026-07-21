@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { init } from "./init";
-import { __resetBindForTests } from "./bind";
+import { init } from "@/init";
+import { __resetBindForTests } from "@/bind";
 
 afterEach(() => {
   __resetBindForTests();

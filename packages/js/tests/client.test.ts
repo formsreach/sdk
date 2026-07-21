@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { FormsReachClientError, submitForm } from "./client";
+import { FormsReachClientError, submitForm } from "@/client";
 
 afterEach(() => {
   vi.unstubAllGlobals();

@@ -2,6 +2,8 @@
 
 Plain JavaScript / CDN SDK for [FormsReach](https://formsreach.com).
 
+For AI coding agents, see [AGENTS.md](./AGENTS.md) (API surface, do/don't, backend contract).
+
 ## CDN
 
 ```html

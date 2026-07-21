@@ -16,7 +16,9 @@
   "unpkg": "./dist/formreach.min.js",
   "jsdelivr": "./dist/formreach.min.js",
   "files": [
-    "dist"
+    "dist",
+    "AGENTS.md",
+    "README.md"
   ],
   "sideEffects": false,
   "scripts": {

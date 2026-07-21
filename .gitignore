@@ -13,13 +13,13 @@ coverage
 .next
 .output
 
-# Local AI agent harness (not published with OSS)
-AGENTS.md
-Agents.md
-AGENT.md
-CLAUDE.md
-Claude.md
-CLAUDE.local.md
+# Local monorepo AI harness (repo root only — packages/*/AGENTS.md ships with npm)
+/AGENTS.md
+/Agents.md
+/AGENT.md
+/CLAUDE.md
+/Claude.md
+/CLAUDE.local.md
 .claude/
 .grok/
 .cursor/

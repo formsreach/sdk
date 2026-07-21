@@ -2,6 +2,8 @@
 
 React and Next.js hook for [FormsReach](https://formsreach.com).
 
+For AI coding agents, see [AGENTS.md](./AGENTS.md) (hook API, Next.js notes, do/don't).
+
 ```bash
 npm install @formsreach/react
 ```

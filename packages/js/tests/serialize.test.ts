@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { formToPayload, withSubmitMeta } from "./serialize";
+import { formToPayload, withSubmitMeta } from "@/serialize";
 
 describe("withSubmitMeta", () => {
   it("injects api_key and empty honeypot", () => {
