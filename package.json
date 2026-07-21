@@ -5,13 +5,39 @@
   "description": "Official FormsReach client SDKs (JS, React, Vue)",
   "packageManager": "pnpm@9.15.0",
   "scripts": {
+    "prepare": "husky",
     "build": "pnpm -r --filter \"./packages/**\" build",
     "test": "pnpm -r --filter \"./packages/**\" test",
     "typecheck": "pnpm -r --filter \"./packages/**\" typecheck",
-    "lint": "pnpm -r --filter \"./packages/**\" lint"
+    "lint": "eslint \"packages/**/*.{ts,tsx}\" --max-warnings 0",
+    "format": "prettier --write \"packages/**/*.{ts,tsx,json,md}\" \"*.md\" \".github/**/*.{yml,yaml}\"",
+    "format:check": "prettier --check \"packages/**/*.{ts,tsx,json,md}\" \"*.md\" \".github/**/*.{yml,yaml}\"",
+    "check": "pnpm format:check && pnpm lint && pnpm typecheck && pnpm test && pnpm build"
+  },
+  "lint-staged": {
+    "packages/**/*.{ts,tsx}": [
+      "eslint --fix --max-warnings 0",
+      "prettier --write"
+    ],
+    "packages/**/*.{json,md}": [
+      "prettier --write"
+    ]
   },
   "engines": {
     "node": ">=20"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@commitlint/cli": "^19",
+    "@commitlint/config-conventional": "^19",
+    "@eslint/js": "^9",
+    "eslint": "^9",
+    "eslint-config-prettier": "^10",
+    "eslint-plugin-react-hooks": "^5",
+    "globals": "^15",
+    "husky": "^9",
+    "lint-staged": "^15",
+    "prettier": "^3",
+    "typescript-eslint": "^8"
+  }
 }

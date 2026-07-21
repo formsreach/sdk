@@ -22,9 +22,9 @@
   "scripts": {
     "build": "tsup",
     "test": "vitest run --passWithNoTests",
-    "typecheck": "tsc --noEmit",
-    "lint": "echo \"no lint yet\""
+    "typecheck": "tsc --noEmit"
   },
+
   "peerDependencies": {
     "vue": ">=3"
   },
