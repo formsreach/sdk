@@ -1,6 +1,6 @@
 {
   "name": "@formsreach/js",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "FormsReach plain JavaScript SDK and CDN script",
   "license": "MIT",
   "type": "module",
