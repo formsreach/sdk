@@ -87,10 +87,7 @@ describe("submitForm", () => {
   });
 
   it("maps network failures", async () => {
-    vi.stubGlobal(
-      "fetch",
-      vi.fn().mockRejectedValue(new Error("offline")),
-    );
+    vi.stubGlobal("fetch", vi.fn().mockRejectedValue(new Error("offline")));
 
     try {
       await submitForm({ apiKey: "fr_test", data: {} });

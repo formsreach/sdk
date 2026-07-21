@@ -10,9 +10,9 @@ npm install @formsreach/vue
 
 ```vue
 <script setup>
-import { useFormsReach } from '@formsreach/vue';
+import { useFormsReach } from "@formsreach/vue";
 
-const { submit, submitting } = useFormsReach('fr_your_key');
+const { submit, submitting } = useFormsReach("fr_your_key");
 </script>
 
 <template>

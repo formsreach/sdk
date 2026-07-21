@@ -16,12 +16,12 @@ Peer: `react` >= 18.
 ## Quick pattern
 
 ```tsx
-'use client'; // required in Next.js App Router client components
+"use client"; // required in Next.js App Router client components
 
-import { useFormsReach } from '@formsreach/react';
+import { useFormsReach } from "@formsreach/react";
 
 export function ContactForm() {
-  const { submit, submitting } = useFormsReach('fr_…');
+  const { submit, submitting } = useFormsReach("fr_…");
 
   return (
     <form onSubmit={submit}>
@@ -40,7 +40,7 @@ Optional options object (same api key string form also works):
 
 ```tsx
 const { submit, submitting } = useFormsReach({
-  apiKey: 'fr_…',
+  apiKey: "fr_…",
   // endpoint?: string
   onSuccess: ({ id, redirectUrl }) => {},
   onError: (err) => {},
@@ -53,19 +53,19 @@ const { submit, submitting } = useFormsReach({
 
 **Argument:** `string` (api key) **or** `UseFormsReachOptions`:
 
-| Field | Type | Notes |
-|---|---|---|
-| `apiKey` | `string` | Required when using the options object |
-| `endpoint` | `string?` | Defaults to FormsReach public submit URL |
-| `onSuccess` | `(result: FormsReachSuccess) => void` | Optional |
-| `onError` | `(error: FormsReachError) => void` | Optional |
+| Field       | Type                                  | Notes                                    |
+| ----------- | ------------------------------------- | ---------------------------------------- |
+| `apiKey`    | `string`                              | Required when using the options object   |
+| `endpoint`  | `string?`                             | Defaults to FormsReach public submit URL |
+| `onSuccess` | `(result: FormsReachSuccess) => void` | Optional                                 |
+| `onError`   | `(error: FormsReachError) => void`    | Optional                                 |
 
 **Returns:**
 
-| Field | Type | Notes |
-|---|---|---|
-| `submit` | `(event: FormEvent<HTMLFormElement>) => void` | Attach to `<form onSubmit={submit}>`. Calls `preventDefault`, serializes string fields, POSTs via `submitForm`. |
-| `submitting` | `boolean` | True while a request is in flight; double-submit is ignored. |
+| Field        | Type                                          | Notes                                                                                                           |
+| ------------ | --------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| `submit`     | `(event: FormEvent<HTMLFormElement>) => void` | Attach to `<form onSubmit={submit}>`. Calls `preventDefault`, serializes string fields, POSTs via `submitForm`. |
+| `submitting` | `boolean`                                     | True while a request is in flight; double-submit is ignored.                                                    |
 
 On success, if `redirectUrl` is non-null, the hook assigns `window.location` to it after `onSuccess`.
 

@@ -28,7 +28,7 @@ https://unpkg.com/@formsreach/js/dist/formreach.min.js
 ```html
 <script src="https://unpkg.com/@formsreach/js/dist/formreach.min.js"></script>
 <script>
-  FormsReach.init({ apiKey: 'fr_…' });
+  FormsReach.init({ apiKey: "fr_…" });
 </script>
 <form data-formsreach>
   <input name="name" required />
@@ -41,10 +41,10 @@ https://unpkg.com/@formsreach/js/dist/formreach.min.js
 ### 2. ESM init
 
 ```ts
-import { FormsReach, init, submitForm } from '@formsreach/js';
+import { FormsReach, init, submitForm } from "@formsreach/js";
 
 FormsReach.init({
-  apiKey: 'fr_…',
+  apiKey: "fr_…",
   // endpoint?: string — default https://formsreach.com/api/v1/submit
   onSuccess: ({ id, redirectUrl }) => {},
   onError: (err) => {},
@@ -57,12 +57,12 @@ Forms with `data-formsreach` are intercepted on submit after `init`.
 ### 3. Programmatic submit (frameworks / custom UI)
 
 ```ts
-import { submitForm, FormsReachClientError } from '@formsreach/js';
+import { submitForm, FormsReachClientError } from "@formsreach/js";
 
 try {
   const { id, redirectUrl } = await submitForm({
-    apiKey: 'fr_…',
-    data: { name: 'Ada', email: 'ada@example.com' },
+    apiKey: "fr_…",
+    data: { name: "Ada", email: "ada@example.com" },
     // endpoint?: string
   });
 } catch (e) {
@@ -77,15 +77,15 @@ Field values must be strings (`Record<string, string>`). File uploads are **not*
 
 ## Public API
 
-| Export | Kind | Notes |
-|---|---|---|
-| `init(options)` | function | Requires non-empty `apiKey`. Binds `data-formsreach` forms. |
-| `submitForm(options)` | function | POST JSON body with `api_key` + fields; adds empty `_gotcha` honeypot if missing. |
-| `FormsReach` | object | `{ init, submitForm }` — also default export. |
-| `FormsReachClientError` | class | `error.formsreach` holds normalized error payload. |
-| `DEFAULT_ENDPOINT` | const | `https://formsreach.com/api/v1/submit` |
-| `FORM_ATTR` | const | `data-formsreach` |
-| `EVENT_SUCCESS` / `EVENT_ERROR` | const | DOM event names (see below) |
+| Export                          | Kind     | Notes                                                                             |
+| ------------------------------- | -------- | --------------------------------------------------------------------------------- |
+| `init(options)`                 | function | Requires non-empty `apiKey`. Binds `data-formsreach` forms.                       |
+| `submitForm(options)`           | function | POST JSON body with `api_key` + fields; adds empty `_gotcha` honeypot if missing. |
+| `FormsReach`                    | object   | `{ init, submitForm }` — also default export.                                     |
+| `FormsReachClientError`         | class    | `error.formsreach` holds normalized error payload.                                |
+| `DEFAULT_ENDPOINT`              | const    | `https://formsreach.com/api/v1/submit`                                            |
+| `FORM_ATTR`                     | const    | `data-formsreach`                                                                 |
+| `EVENT_SUCCESS` / `EVENT_ERROR` | const    | DOM event names (see below)                                                       |
 
 ### `FormsReachInitOptions`
 
@@ -131,10 +131,10 @@ Field values must be strings (`Record<string, string>`). File uploads are **not*
 
 ## Related packages
 
-| Package | When to use |
-|---|---|
+| Package             | When to use                       |
+| ------------------- | --------------------------------- |
 | `@formsreach/react` | React / Next.js — `useFormsReach` |
-| `@formsreach/vue` | Vue / Nuxt — `useFormsReach` |
+| `@formsreach/vue`   | Vue / Nuxt — `useFormsReach`      |
 
 ## Human docs
 

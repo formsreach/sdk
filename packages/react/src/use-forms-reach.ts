@@ -43,6 +43,7 @@ export function useFormsReach(
       ? { apiKey: apiKeyOrOptions }
       : apiKeyOrOptions;
 
+  const { apiKey, endpoint, onSuccess, onError } = options;
   const [submitting, setSubmitting] = useState(false);
 
   const submit = useCallback(
@@ -55,12 +56,12 @@ export function useFormsReach(
 
       setSubmitting(true);
       void submitForm({
-        apiKey: options.apiKey,
-        endpoint: options.endpoint,
+        apiKey,
+        endpoint,
         data,
       })
         .then((result) => {
-          options.onSuccess?.(result);
+          onSuccess?.(result);
           if (result.redirectUrl) {
             window.location.assign(result.redirectUrl);
           }
@@ -75,13 +76,13 @@ export function useFormsReach(
                   title: "Unknown error",
                   detail: e instanceof Error ? e.message : String(e),
                 };
-          options.onError?.(error);
+          onError?.(error);
         })
         .finally(() => {
           setSubmitting(false);
         });
     },
-    [options.apiKey, options.endpoint, options.onSuccess, options.onError, submitting],
+    [apiKey, endpoint, onSuccess, onError, submitting],
   );
 
   return { submit, submitting };

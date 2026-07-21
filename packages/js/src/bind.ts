@@ -8,9 +8,7 @@ let config: FormsReachInitOptions | null = null;
 const inFlight = new WeakSet<HTMLFormElement>();
 
 function isFormsReachForm(el: EventTarget | null): el is HTMLFormElement {
-  return (
-    el instanceof HTMLFormElement && el.hasAttribute(FORM_ATTR)
-  );
+  return el instanceof HTMLFormElement && el.hasAttribute(FORM_ATTR);
 }
 
 function setBusy(form: HTMLFormElement, busy: boolean): void {
@@ -20,9 +18,9 @@ function setBusy(form: HTMLFormElement, busy: boolean): void {
     form.removeAttribute("aria-busy");
   }
 
-  const controls = form.querySelectorAll<
-    HTMLButtonElement | HTMLInputElement
-  >('button[type="submit"], input[type="submit"]');
+  const controls = form.querySelectorAll<HTMLButtonElement | HTMLInputElement>(
+    'button[type="submit"], input[type="submit"]',
+  );
   for (const el of controls) {
     el.disabled = busy;
   }

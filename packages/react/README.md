@@ -9,12 +9,12 @@ npm install @formsreach/react
 ```
 
 ```tsx
-'use client'; // Next.js App Router
+"use client"; // Next.js App Router
 
-import { useFormsReach } from '@formsreach/react';
+import { useFormsReach } from "@formsreach/react";
 
 export default function ContactForm() {
-  const { submit, submitting } = useFormsReach('fr_your_key');
+  const { submit, submitting } = useFormsReach("fr_your_key");
 
   return (
     <form onSubmit={submit}>

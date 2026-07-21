@@ -9,7 +9,7 @@ For AI coding agents, see [AGENTS.md](./AGENTS.md) (API surface, do/don't, backe
 ```html
 <script src="https://unpkg.com/@formsreach/js/dist/formreach.min.js"></script>
 <script>
-  FormsReach.init({ apiKey: 'fr_your_key' });
+  FormsReach.init({ apiKey: "fr_your_key" });
 </script>
 
 <form data-formsreach>
@@ -27,24 +27,28 @@ npm install @formsreach/js
 ```
 
 ```ts
-import { FormsReach, submitForm } from '@formsreach/js';
+import { FormsReach, submitForm } from "@formsreach/js";
 
 FormsReach.init({
-  apiKey: 'fr_your_key',
+  apiKey: "fr_your_key",
   // endpoint: 'https://formsreach.com/api/v1/submit',
-  onSuccess: ({ id, redirectUrl }) => { /* … */ },
-  onError: (err) => { /* … */ },
+  onSuccess: ({ id, redirectUrl }) => {
+    /* … */
+  },
+  onError: (err) => {
+    /* … */
+  },
 });
 ```
 
 ### Programmatic submit (for frameworks)
 
 ```ts
-import { submitForm } from '@formsreach/js';
+import { submitForm } from "@formsreach/js";
 
 const { id, redirectUrl } = await submitForm({
-  apiKey: 'fr_your_key',
-  data: { name: 'Ada', email: 'ada@example.com' },
+  apiKey: "fr_your_key",
+  data: { name: "Ada", email: "ada@example.com" },
 });
 ```
 

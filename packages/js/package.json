@@ -27,7 +27,6 @@
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit"
   },
-
   "devDependencies": {
     "@types/node": "^22.10.0",
     "happy-dom": "^15.11.7",

@@ -24,7 +24,6 @@
     "test": "vitest run --passWithNoTests",
     "typecheck": "tsc --noEmit"
   },
-
   "peerDependencies": {
     "react": ">=18"
   },
