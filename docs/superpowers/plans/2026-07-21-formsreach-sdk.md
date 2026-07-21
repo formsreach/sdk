@@ -10,14 +10,14 @@
 - [x] Design + plan docs
 - [x] packages/js, react, vue scaffold
 - [x] examples (html runnable; others README stubs)
-- [ ] `pnpm install && pnpm build && pnpm test` green
-- [ ] `git init` + initial commit
+- [x] `pnpm install && pnpm build && pnpm test` green
+- [x] `git init` + initial commit
 
 ## Phase 1 — Harden `@formsreach/js`
 
 - [x] serialize, client, bind, init, events
 - [x] unit tests (serialize, client, init)
-- [ ] Fix IIFE global export if needed after build smoke
+- [x] IIFE global `FormsReach` smoke-verified (`init` + `submitForm`)
 - [ ] Optional: demo server script in root README
 
 ## Phase 2 — Framework polish
