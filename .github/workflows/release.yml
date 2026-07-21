@@ -11,6 +11,9 @@ concurrency:
 jobs:
   release:
     runs-on: ubuntu-latest
+    # Skip husky pre-push (pnpm check) when changesets/action pushes Version PR
+    env:
+      HUSKY: "0"
     permissions:
       contents: write
       pull-requests: write
