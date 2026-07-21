@@ -32,7 +32,12 @@ Official client libraries for [FormsReach](https://formsreach.com) — drop-in f
 pnpm install
 pnpm -r build
 pnpm -r test
+pnpm lint
+pnpm format
+pnpm check   # format:check + lint + typecheck + test + build (also runs on pre-push)
 ```
+
+Git hooks (Husky): Conventional Commits on `commit-msg`; lint-staged on `pre-commit`; full `pnpm check` on `pre-push`.
 
 ## Examples
 
