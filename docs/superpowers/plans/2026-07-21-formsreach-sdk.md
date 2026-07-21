@@ -30,8 +30,8 @@
 ## Phase 3 — Publish
 
 - [ ] npm org `@formsreach` access
-- [ ] changesets or manual publish
-- [ ] Host `formreach.min.js` on CDN (or document unpkg/jsDelivr path)
+- [ ] changesets or manual publish (unpkg serves the package after npm publish)
+- [x] Document CDN as unpkg (no `cdn.formsreach.com`)
 - [ ] CI workflow
 
 ## Phase 4 — Product alignment

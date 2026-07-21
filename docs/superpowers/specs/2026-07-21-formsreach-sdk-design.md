@@ -21,7 +21,7 @@ Client SDKs that submit browser forms to FormsReach `POST /api/v1/submit`. Three
 | Error UX | Callback + event; re-enable controls; no alert |
 | Plain JS discovery | Document-level submit delegation |
 | Shared logic | `submitForm` exported from `@formsreach/js`; frameworks depend on it |
-| CDN file | `formreach.min.js` (global `FormsReach`) |
+| CDN | unpkg: `https://unpkg.com/@formsreach/js/dist/formreach.min.js` (`formreach.min.js`, global `FormsReach`) |
 | Default endpoint | `https://formsreach.com/api/v1/submit` |
 
 ## Backend contract

@@ -25,7 +25,7 @@ Open-source client SDKs for the FormsReach form backend.
 **Plain JS / CDN**
 
 ```html
-<script src="https://cdn.formsreach.com/js/formreach.min.js"></script>
+<script src="https://unpkg.com/@formsreach/js/dist/formreach.min.js"></script>
 <script>
   FormsReach.init({ apiKey: 'fr_…' });
 </script>
@@ -48,6 +48,7 @@ const { submit, submitting } = useFormsReach('fr_…');
 // <form @submit.prevent="submit">
 ```
 
+CDN is **unpkg** (`https://unpkg.com/@formsreach/js/dist/formreach.min.js`), not a custom domain.
 Do **not** rename the CDN file (`formreach.min.js`), the global (`FormsReach`), or the `data-formsreach` attribute without a major version + product snippet update.
 
 ## Conventions

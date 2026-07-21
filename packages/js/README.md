@@ -5,7 +5,7 @@ Plain JavaScript / CDN SDK for [FormsReach](https://formsreach.com).
 ## CDN
 
 ```html
-<script src="https://cdn.formsreach.com/js/formreach.min.js"></script>
+<script src="https://unpkg.com/@formsreach/js/dist/formreach.min.js"></script>
 <script>
   FormsReach.init({ apiKey: 'fr_your_key' });
 </script>
