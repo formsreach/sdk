@@ -27,7 +27,22 @@ Official client libraries for [FormsReach](https://formsreach.com) — a form ba
 
 ## Quick start
 
-### HTML / CDN
+### HTML
+```html
+<form action="https://api.formsreach.com/submit" method="POST">
+  <input type="hidden" name="api_key" value="YOUR_API_KEY">
+
+  <input type="text" name="name" required>
+  <input type="email" name="email" required>
+  <textarea name="message" required></textarea>
+
+  <button type="submit">Submit Form</button>
+</form>
+```
+
+Get an API key from the [FormsReach dashboard](https://formsreach.com).
+
+### Javascript
 
 ```html
 <script src="https://unpkg.com/@formsreach/js/dist/formsreach.min.js"></script>
