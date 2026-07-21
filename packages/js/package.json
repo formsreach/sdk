@@ -13,8 +13,8 @@
       "import": "./dist/index.js"
     }
   },
-  "unpkg": "./dist/formreach.min.js",
-  "jsdelivr": "./dist/formreach.min.js",
+  "unpkg": "./dist/formsreach.min.js",
+  "jsdelivr": "./dist/formsreach.min.js",
   "files": [
     "dist",
     "AGENTS.md",

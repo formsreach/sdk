@@ -13,7 +13,7 @@ Official client libraries for [FormsReach](https://formsreach.com) — drop-in f
 ## Quick start (plain JS)
 
 ```html
-<script src="https://unpkg.com/@formsreach/js/dist/formreach.min.js"></script>
+<script src="https://unpkg.com/@formsreach/js/dist/formsreach.min.js"></script>
 <script>
   FormsReach.init({ apiKey: "fr_your_key" });
 </script>

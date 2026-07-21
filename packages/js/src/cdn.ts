@@ -1,5 +1,5 @@
 /**
- * CDN / IIFE entry. Builds `formreach.min.js` with global `FormsReach`.
+ * CDN / IIFE entry. Builds `formsreach.min.js` with global `FormsReach`.
  */
 import { init } from "./init";
 import { submitForm } from "./client";

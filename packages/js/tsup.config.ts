@@ -11,7 +11,7 @@ export default defineConfig([
     treeshake: true,
   },
   {
-    entry: { "formreach.min": "src/cdn.ts" },
+    entry: { "formsreach.min": "src/cdn.ts" },
     format: ["iife"],
     globalName: "FormsReach",
     minify: true,

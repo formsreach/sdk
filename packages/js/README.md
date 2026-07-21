@@ -7,7 +7,7 @@ For AI coding agents, see [AGENTS.md](./AGENTS.md) (API surface, do/don't, backe
 ## CDN
 
 ```html
-<script src="https://unpkg.com/@formsreach/js/dist/formreach.min.js"></script>
+<script src="https://unpkg.com/@formsreach/js/dist/formsreach.min.js"></script>
 <script>
   FormsReach.init({ apiKey: "fr_your_key" });
 </script>
@@ -61,5 +61,5 @@ const { id, redirectUrl } = await submitForm({
 
 ```bash
 pnpm --filter @formsreach/js build
-# dist/index.js, dist/index.d.ts, dist/formreach.min.js
+# dist/index.js, dist/index.d.ts, dist/formsreach.min.js
 ```
