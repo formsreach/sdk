@@ -28,12 +28,13 @@ Official client libraries for [FormsReach](https://formsreach.com) — a form ba
 ## Quick start
 
 ### HTML
+
 ```html
 <form action="https://api.formsreach.com/submit" method="POST">
-  <input type="hidden" name="api_key" value="YOUR_API_KEY">
+  <input type="hidden" name="api_key" value="YOUR_API_KEY" />
 
-  <input type="text" name="name" required>
-  <input type="email" name="email" required>
+  <input type="text" name="name" required />
+  <input type="email" name="email" required />
   <textarea name="message" required></textarea>
 
   <button type="submit">Submit Form</button>
