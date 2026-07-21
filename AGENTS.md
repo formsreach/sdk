@@ -81,6 +81,6 @@ pnpm -r typecheck
 2. Export `submitForm` for frameworks
 3. `@formsreach/react` + examples
 4. `@formsreach/vue` + examples
-5. npm publish + CDN hosting
+5. npm publish (unpkg picks up `dist/formreach.min.js` automatically)
 
 See `docs/superpowers/plans/2026-07-21-formsreach-sdk.md`.
