@@ -12,3 +12,17 @@ coverage
 .nuxt
 .next
 .output
+
+AGENTS.md
+CLAUDE.md
+
+# Local AI agent harness (not published with OSS)
+AGENTS.md
+Agents.md
+AGENT.md
+CLAUDE.md
+Claude.md
+CLAUDE.local.md
+.claude/
+.grok/
+.cursor/

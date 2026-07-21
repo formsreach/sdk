@@ -6,7 +6,7 @@
 ## Phase 0 — Bootstrap (done when monorepo builds)
 
 - [x] Root package.json, pnpm workspace, LICENSE, README
-- [x] AGENTS.md / CLAUDE.md for Grok
+- [x] AGENTS.md / CLAUDE.md for Grok (local only — gitignored, not published)
 - [x] Design + plan docs
 - [x] packages/js, react, vue scaffold
 - [x] examples (html runnable; others README stubs)
@@ -42,7 +42,7 @@
 ## Grok bootstrap for this repo
 
 1. `cd /Users/muthaiyan/dev/personal/formsreach-sdk && grok`
-2. AGENTS.md loads automatically (project rules).
+2. Keep a local `AGENTS.md` (gitignored) for project rules — not shipped in the public repo.
 3. Optional experimental memory:
    ```toml
    # ~/.grok/config.toml
@@ -51,4 +51,4 @@
    ```
    Then `/remember` key decisions and `/flush` after bootstrap sessions.
 4. First prompt template:
-   > Read AGENTS.md and docs/superpowers/. Continue Phase 1 — green tests + dual build for @formsreach/js.
+   > Read local AGENTS.md (if present) and docs/superpowers/. Continue from the current plan phase.
