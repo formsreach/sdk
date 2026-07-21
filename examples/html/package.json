@@ -1,0 +1,9 @@
+{
+  "name": "@formsreach/example-html",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Plain HTML example for @formsreach/js",
+  "scripts": {
+    "start": "npx --yes serve . -p 4173"
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "name": "@formsreach/js",
+  "version": "0.1.0",
+  "description": "FormsReach plain JavaScript SDK and CDN script",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "unpkg": "./dist/formreach.min.js",
+  "jsdelivr": "./dist/formreach.min.js",
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "lint": "echo \"no lint yet\""
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "happy-dom": "^15.11.7",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/formsreach/sdk.git",
+    "directory": "packages/js"
+  },
+  "keywords": [
+    "formsreach",
+    "forms",
+    "form-backend",
+    "cdn"
+  ]
+}

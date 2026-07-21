@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FormsReach — HTML example</title>
+    <style>
+      body {
+        font-family: system-ui, sans-serif;
+        max-width: 28rem;
+        margin: 2rem auto;
+        padding: 0 1rem;
+      }
+      label {
+        display: block;
+        margin-bottom: 0.75rem;
+      }
+      input,
+      textarea {
+        width: 100%;
+        box-sizing: border-box;
+        margin-top: 0.25rem;
+      }
+      #log {
+        margin-top: 1rem;
+        font-size: 0.875rem;
+        color: #444;
+        white-space: pre-wrap;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>FormsReach HTML example</h1>
+    <p>
+      Build the JS package first (<code>pnpm --filter @formsreach/js build</code>),
+      then open this file via a local static server. Set your form API key below.
+    </p>
+
+    <form data-formsreach>
+      <label>
+        Name
+        <input type="text" name="name" required />
+      </label>
+      <label>
+        Email
+        <input type="email" name="email" required />
+      </label>
+      <label>
+        Message
+        <textarea name="message" required rows="4"></textarea>
+      </label>
+      <button type="submit">Submit Form</button>
+    </form>
+
+    <div id="log"></div>
+
+    <!-- After build: point at dist artifact -->
+    <script src="../../packages/js/dist/formreach.min.js"></script>
+    <script>
+      const log = document.getElementById("log");
+      const params = new URLSearchParams(location.search);
+      const apiKey = params.get("apiKey") || "fr_replace_me";
+
+      FormsReach.init({
+        apiKey,
+        // Optional: point at local formsreach-app
+        // endpoint: "http://localhost:3000/api/v1/submit",
+        onSuccess(result) {
+          log.textContent = "Success: " + JSON.stringify(result, null, 2);
+        },
+        onError(err) {
+          log.textContent = "Error: " + JSON.stringify(err, null, 2);
+        },
+      });
+    </script>
+  </body>
+</html>
