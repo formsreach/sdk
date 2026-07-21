@@ -12,7 +12,10 @@
     "lint": "eslint \"packages/**/*.{ts,tsx}\" --max-warnings 0",
     "format": "prettier --write \"packages/**/*.{ts,tsx,json,md}\" \"*.md\" \".github/**/*.{yml,yaml}\"",
     "format:check": "prettier --check \"packages/**/*.{ts,tsx,json,md}\" \"*.md\" \".github/**/*.{yml,yaml}\"",
-    "check": "pnpm format:check && pnpm lint && pnpm typecheck && pnpm test && pnpm build"
+    "check": "pnpm format:check && pnpm lint && pnpm typecheck && pnpm test && pnpm build",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "pnpm build && changeset publish"
   },
   "lint-staged": {
     "packages/**/*.{ts,tsx}": [
@@ -28,6 +31,7 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@changesets/cli": "^2.31.1",
     "@commitlint/cli": "^19",
     "@commitlint/config-conventional": "^19",
     "@eslint/js": "^9",

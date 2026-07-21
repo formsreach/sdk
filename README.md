@@ -37,7 +37,24 @@ pnpm format
 pnpm check   # format:check + lint + typecheck + test + build (also runs on pre-push)
 ```
 
+## Contributing
+
+- Use the GitHub issue templates for bugs and feature requests.
+- Open a PR against `main`. The PR template includes a short checklist.
+- For changes that affect published packages (`@formsreach/js`, `@formsreach/react`, `@formsreach/vue`), run `pnpm changeset`, choose a bump type, and commit the new file under `.changeset/`.
+- Packages version in **lockstep** (same version across all three).
+- See [Changesets](https://github.com/changesets/changesets) for details.
+
 Git hooks (Husky): Conventional Commits on `commit-msg`; lint-staged on `pre-commit`; full `pnpm check` on `pre-push`.
+
+## Releasing
+
+1. Merge PRs that include changesets into `main`.
+2. The **Release** workflow opens or updates a **Version Packages** PR (bumps all packages together, updates each package `CHANGELOG.md`).
+3. Review and merge the Version Packages PR.
+4. The same workflow publishes to npm (`pnpm release` → build + `changeset publish`).
+
+**Maintainer setup (one-time):** add a GitHub Actions secret `NPM_TOKEN` with publish access to the `@formsreach` npm scope. First public ship should use a real changeset (e.g. "Initial public release") via a Version PR — not a tooling-only dummy bump.
 
 ## Examples
 
