@@ -14,19 +14,19 @@ npm install @formsreach/js
 CDN (do **not** change the path, global name, or form attribute):
 
 ```
-https://unpkg.com/@formsreach/js/dist/formreach.min.js
+https://unpkg.com/@formsreach/js/dist/formsreach.min.js
 ```
 
 - Global: `FormsReach`
 - Auto-bind attribute: `data-formsreach`
-- CDN file name: `formreach.min.js`
+- CDN file name: `formsreach.min.js`
 
 ## Quick patterns
 
 ### 1. CDN + auto-bind (dashboard default)
 
 ```html
-<script src="https://unpkg.com/@formsreach/js/dist/formreach.min.js"></script>
+<script src="https://unpkg.com/@formsreach/js/dist/formsreach.min.js"></script>
 <script>
   FormsReach.init({ apiKey: "fr_…" });
 </script>
