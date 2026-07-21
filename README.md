@@ -1,6 +1,21 @@
 # FormsReach SDK
 
-Official client libraries for [FormsReach](https://formsreach.com) — drop-in form backend for static sites and modern frameworks.
+[![npm @formsreach/js](https://img.shields.io/npm/v/@formsreach/js.svg)](https://www.npmjs.com/package/@formsreach/js)
+[![npm @formsreach/react](https://img.shields.io/npm/v/@formsreach/react.svg)](https://www.npmjs.com/package/@formsreach/react)
+[![npm @formsreach/vue](https://img.shields.io/npm/v/@formsreach/vue.svg)](https://www.npmjs.com/package/@formsreach/vue)
+[![CI](https://github.com/formsreach/sdk/actions/workflows/ci.yml/badge.svg)](https://github.com/formsreach/sdk/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
+
+Official client libraries for [FormsReach](https://formsreach.com) — a form backend and form API for static sites and modern frameworks. Submit HTML, React, or Vue forms without running your own server.
+
+## Features
+
+- **CDN drop-in** — one script tag + `data-formsreach` on any form
+- **Plain JS / ESM** — `@formsreach/js` for vanilla apps and custom UIs
+- **React & Next.js** — `useFormsReach` hook
+- **Vue & Nuxt** — `useFormsReach` composable
+- **TypeScript** — published types for all packages
+- **Zero runtime deps** on the core JS SDK
 
 ## Packages
 
@@ -10,7 +25,9 @@ Official client libraries for [FormsReach](https://formsreach.com) — drop-in f
 | [`@formsreach/react`](./packages/react) | `npm i @formsreach/react`     | React & Next.js         |
 | [`@formsreach/vue`](./packages/vue)     | `npm i @formsreach/vue`       | Vue & Nuxt              |
 
-## Quick start (plain JS)
+## Quick start
+
+### HTML / CDN
 
 ```html
 <script src="https://unpkg.com/@formsreach/js/dist/formsreach.min.js"></script>
@@ -25,6 +42,48 @@ Official client libraries for [FormsReach](https://formsreach.com) — drop-in f
   <button type="submit">Submit</button>
 </form>
 ```
+
+Get an API key from the [FormsReach dashboard](https://formsreach.com). See [`packages/js`](./packages/js) for programmatic `submitForm` usage.
+
+### React / Next.js
+
+```bash
+npm install @formsreach/react
+```
+
+```tsx
+import { useFormsReach } from "@formsreach/react";
+
+const { submit, submitting } = useFormsReach("fr_your_key");
+// <form onSubmit={submit}>…</form>
+```
+
+Full guide: [`packages/react`](./packages/react).
+
+### Vue / Nuxt
+
+```bash
+npm install @formsreach/vue
+```
+
+```vue
+<script setup>
+import { useFormsReach } from "@formsreach/vue";
+const { submit, submitting } = useFormsReach("fr_your_key");
+</script>
+```
+
+Full guide: [`packages/vue`](./packages/vue).
+
+## Examples
+
+| Stack           | Path                                   |
+| --------------- | -------------------------------------- |
+| HTML / plain JS | [`examples/html`](./examples/html)     |
+| React           | [`examples/react`](./examples/react)   |
+| Next.js         | [`examples/nextjs`](./examples/nextjs) |
+| Vue             | [`examples/vue`](./examples/vue)       |
+| Nuxt            | [`examples/nuxt`](./examples/nuxt)     |
 
 ## Monorepo
 
@@ -57,10 +116,6 @@ The **Version Packages** PR is opened automatically by GitHub Actions when chang
 4. The same workflow publishes to npm (`pnpm release` → build + `changeset publish`).
 
 **Maintainer setup (one-time):** add a GitHub Actions secret `NPM_TOKEN` with publish access to the `@formsreach` npm scope. First public ship should use a real changeset (e.g. "Initial public release") via a Version PR — not a tooling-only dummy bump.
-
-## Examples
-
-See [`examples/`](./examples) for HTML, React, Next.js, Vue, and Nuxt.
 
 ## License
 

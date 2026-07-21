@@ -1,8 +1,18 @@
 # `@formsreach/js`
 
-Plain JavaScript / CDN SDK for [FormsReach](https://formsreach.com).
+Plain JavaScript / CDN SDK for [FormsReach](https://formsreach.com) — form backend for static sites and vanilla JS apps.
+
+[![npm](https://img.shields.io/npm/v/@formsreach/js.svg)](https://www.npmjs.com/package/@formsreach/js)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](../../LICENSE)
 
 For AI coding agents, see [AGENTS.md](./AGENTS.md) (API surface, do/don't, backend contract).
+
+## Install
+
+```bash
+npm install @formsreach/js
+# or: yarn add @formsreach/js / pnpm add @formsreach/js
+```
 
 ## CDN
 
@@ -20,28 +30,11 @@ For AI coding agents, see [AGENTS.md](./AGENTS.md) (API surface, do/don't, backe
 </form>
 ```
 
-## npm
+Forms with `data-formsreach` are intercepted after `FormsReach.init`.
 
-```bash
-npm install @formsreach/js
-```
+## Programmatic submit
 
-```ts
-import { FormsReach, submitForm } from "@formsreach/js";
-
-FormsReach.init({
-  apiKey: "fr_your_key",
-  // endpoint: 'https://formsreach.com/api/v1/submit',
-  onSuccess: ({ id, redirectUrl }) => {
-    /* … */
-  },
-  onError: (err) => {
-    /* … */
-  },
-});
-```
-
-### Programmatic submit (for frameworks)
+For frameworks or custom UI:
 
 ```ts
 import { submitForm } from "@formsreach/js";
@@ -54,8 +47,22 @@ const { id, redirectUrl } = await submitForm({
 
 ## Events
 
+After `init`, the SDK dispatches DOM events on `document`:
+
 - `formsreach:success` — `detail: { id, redirectUrl }`
 - `formsreach:error` — `detail: { status, code, title, detail?, requestId? }`
+
+## Examples
+
+- [HTML / plain JS](../../examples/html) — runnable static example
+- Monorepo overview: [root README](../../README.md)
+
+## Related packages
+
+| Package                         | When to use                       |
+| ------------------------------- | --------------------------------- |
+| [`@formsreach/react`](../react) | React / Next.js — `useFormsReach` |
+| [`@formsreach/vue`](../vue)     | Vue / Nuxt — `useFormsReach`      |
 
 ## Build
 
@@ -63,3 +70,7 @@ const { id, redirectUrl } = await submitForm({
 pnpm --filter @formsreach/js build
 # dist/index.js, dist/index.d.ts, dist/formsreach.min.js
 ```
+
+## License
+
+MIT
