@@ -23,3 +23,6 @@ coverage
 .claude/
 .grok/
 .cursor/
+
+# Git worktrees (local isolation)
+.worktrees/
