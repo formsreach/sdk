@@ -1,0 +1,38 @@
+name: Feature request
+description: Propose an improvement to a FormsReach SDK package
+title: "[feat]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem / use case
+      description: What problem are you trying to solve?
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed solution
+      description: How should this work?
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Other approaches you tried or considered
+    validations:
+      required: false
+  - type: dropdown
+    id: packages
+    attributes:
+      label: Affected packages
+      multiple: true
+      options:
+        - "@formsreach/js"
+        - "@formsreach/react"
+        - "@formsreach/vue"
+        - unclear / multiple
+    validations:
+      required: true

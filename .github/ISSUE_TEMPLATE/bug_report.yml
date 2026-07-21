@@ -1,0 +1,67 @@
+name: Bug report
+description: Report a problem with a FormsReach SDK package
+title: "[bug]: "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What went wrong?
+    validations:
+      required: true
+  - type: dropdown
+    id: package
+    attributes:
+      label: Package
+      options:
+        - "@formsreach/js"
+        - "@formsreach/react"
+        - "@formsreach/vue"
+        - unclear / multiple
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Package version
+      description: e.g. 0.1.0
+      placeholder: 0.1.0
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Browser, Node, React/Vue/Next/Nuxt versions as relevant
+      placeholder: |
+        Browser: Chrome 131
+        Framework: Next.js 15 / React 19
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Minimal steps that trigger the bug
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+  - type: input
+    id: repro
+    attributes:
+      label: Minimal reproduction (optional)
+      description: Link to a repo, CodeSandbox, StackBlitz, etc.
+    validations:
+      required: false
