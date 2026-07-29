@@ -1,6 +1,6 @@
 {
   "name": "@formsreach/react",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "FormsReach React / Next.js SDK",
   "license": "MIT",
   "type": "module",
