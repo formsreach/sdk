@@ -136,3 +136,7 @@ The **Version Packages** PR is opened automatically by GitHub Actions when chang
 ## License
 
 MIT
+
+---
+
+Part of **[FormsReach](https://github.com/formsreach)** — form backend / contact form API. Product: [formsreach.com](https://formsreach.com) · AI skill: [formsreach/skills](https://github.com/formsreach/skills)
