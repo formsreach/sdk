@@ -73,7 +73,7 @@ On success, if `redirectUrl` is non-null, the hook assigns `window.location` to 
 
 - Use a native `<form>` and named controls (`name="…"`)
 - Values are collected as strings only (no file inputs)
-- Optional honeypot: include `<input type="text" name="_gotcha" …>` if you want client-side bot field (server treats non-empty as silent success)
+- Spam protection is automatic: the hook injects empty `_gotcha` + mount-time `_ts` on submit via `ensureSpamFields`. Optional explicit fields in markup are preserved if present.
 
 ## Errors
 

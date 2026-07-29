@@ -69,7 +69,7 @@ On success, if `redirectUrl` is non-null, the composable assigns `window.locatio
 
 - Use a native `<form>` and named controls (`name="…"`)
 - Values are collected as strings only (no file inputs)
-- Optional honeypot: `<input name="_gotcha" …>` (server treats non-empty as silent success)
+- Spam protection is automatic: the composable injects empty `_gotcha` + mount-time `_ts` on submit via `ensureSpamFields`. Optional explicit fields in markup are preserved if present.
 
 ## Errors
 

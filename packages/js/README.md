@@ -30,7 +30,7 @@ npm install @formsreach/js
 </form>
 ```
 
-Forms with `data-formsreach` are intercepted after `FormsReach.init`.
+Forms with `data-formsreach` are intercepted after `FormsReach.init`. The SDK injects honeypot (`_gotcha`) and time-trap (`_ts`) automatically — no extra markup required.
 
 ## Programmatic submit
 

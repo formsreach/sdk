@@ -77,15 +77,16 @@ Field values must be strings (`Record<string, string>`). File uploads are **not*
 
 ## Public API
 
-| Export                          | Kind     | Notes                                                                             |
-| ------------------------------- | -------- | --------------------------------------------------------------------------------- |
-| `init(options)`                 | function | Requires non-empty `apiKey`. Binds `data-formsreach` forms.                       |
-| `submitForm(options)`           | function | POST JSON body with `api_key` + fields; adds empty `_gotcha` honeypot if missing. |
-| `FormsReach`                    | object   | `{ init, submitForm }` — also default export.                                     |
-| `FormsReachClientError`         | class    | `error.formsreach` holds normalized error payload.                                |
-| `DEFAULT_ENDPOINT`              | const    | `https://formsreach.com/api/v1/submit`                                            |
-| `FORM_ATTR`                     | const    | `data-formsreach`                                                                 |
-| `EVENT_SUCCESS` / `EVENT_ERROR` | const    | DOM event names (see below)                                                       |
+| Export                          | Kind     | Notes                                                                                     |
+| ------------------------------- | -------- | ----------------------------------------------------------------------------------------- |
+| `init(options)`                 | function | Requires non-empty `apiKey`. Binds `data-formsreach` forms; injects spam fields.          |
+| `submitForm(options)`           | function | POST JSON with `api_key` + fields; empty `_gotcha` if missing; **does not invent `_ts`**. |
+| `ensureSpamFields(form, opts?)` | function | Injects empty `_gotcha` + once-set `_ts` into the form DOM (idempotent).                  |
+| `FormsReach`                    | object   | `{ init, submitForm }` — also default export.                                             |
+| `FormsReachClientError`         | class    | `error.formsreach` holds normalized error payload.                                        |
+| `DEFAULT_ENDPOINT`              | const    | `https://formsreach.com/api/v1/submit`                                                    |
+| `FORM_ATTR`                     | const    | `data-formsreach`                                                                         |
+| `EVENT_SUCCESS` / `EVENT_ERROR` | const    | DOM event names (see below)                                                               |
 
 ### `FormsReachInitOptions`
 
@@ -103,7 +104,9 @@ Field values must be strings (`Record<string, string>`). File uploads are **not*
 ## Backend contract (do not invent alternatives)
 
 - `POST` to endpoint (default above)
-- Body JSON: form fields + `api_key` + optional `_gotcha` (non-empty → silent bot success server-side)
+- Body JSON: form fields + `api_key` + `_gotcha` (non-empty → silent spam) + `_ts` (render ms; too fast → silent spam; missing skips)
+- `init` / React / Vue auto-inject `_gotcha` + `_ts` via `ensureSpamFields`. Raw HTML POST without the SDK must include both in markup.
+- Programmatic `submitForm({ data })` without a form does not invent `_ts` (server skips time-trap).
 - Success envelope: `{ status: "success", data: { ok: true, id, redirectUrl }, meta: { requestId } }`
 - Failure envelope: `{ status: "failure", data: null, error: Problem, meta }`
 - Domain allowlist + CORS are enforced by FormsReach servers

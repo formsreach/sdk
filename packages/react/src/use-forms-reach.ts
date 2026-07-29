@@ -1,7 +1,8 @@
-import { useCallback, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import {
   submitForm,
   FormsReachClientError,
+  ensureSpamFields,
   type FormsReachError,
   type FormsReachSuccess,
 } from "@formsreach/js";
@@ -31,6 +32,8 @@ function formDataToRecord(form: HTMLFormElement): Record<string, string> {
 /**
  * React / Next.js hook. Matches the FormsReach dashboard snippet API.
  *
+ * Spam protection (`_gotcha` + `_ts`) is injected automatically on submit.
+ *
  * @example
  * const { submit, submitting } = useFormsReach('fr_…');
  * <form onSubmit={submit}>…</form>
@@ -45,6 +48,7 @@ export function useFormsReach(
 
   const { apiKey, endpoint, onSuccess, onError } = options;
   const [submitting, setSubmitting] = useState(false);
+  const mountTs = useRef(String(Date.now()));
 
   const submit = useCallback(
     (event: React.FormEvent<HTMLFormElement>) => {
@@ -52,6 +56,7 @@ export function useFormsReach(
       if (submitting) return;
 
       const form = event.currentTarget;
+      ensureSpamFields(form, { ts: mountTs.current });
       const data = formDataToRecord(form);
 
       setSubmitting(true);

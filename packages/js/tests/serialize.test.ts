@@ -13,6 +13,22 @@ describe("withSubmitMeta", () => {
   it("preserves existing honeypot", () => {
     expect(withSubmitMeta({ _gotcha: "bot" }, "fr_test")._gotcha).toBe("bot");
   });
+
+  it("does not invent _ts when missing", () => {
+    const result = withSubmitMeta({ name: "Ada" }, "fr_test");
+    expect(result).toEqual({
+      name: "Ada",
+      api_key: "fr_test",
+      _gotcha: "",
+    });
+    expect(result).not.toHaveProperty("_ts");
+  });
+
+  it("preserves caller-provided _ts", () => {
+    expect(withSubmitMeta({ name: "Ada", _ts: "99" }, "fr_test")._ts).toBe(
+      "99",
+    );
+  });
 });
 
 describe("formToPayload", () => {

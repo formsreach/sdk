@@ -1,5 +1,6 @@
 /**
- * Build a string-only payload from a form, inject api_key + honeypot.
+ * Build a string-only payload from a form, inject api_key + empty honeypot if missing.
+ * Does not invent `_ts` (set via ensureSpamFields / form markup at render time).
  * File inputs are skipped (product API accepts string fields only).
  */
 export function formToPayload(
@@ -23,7 +24,10 @@ export function formToPayload(
   return data;
 }
 
-/** Ensure programmatic data has api_key and empty honeypot when missing. */
+/**
+ * Ensure programmatic data has api_key and empty honeypot when missing.
+ * Never invents `_ts` — missing time-trap is skipped server-side.
+ */
 export function withSubmitMeta(
   data: Record<string, string>,
   apiKey: string,

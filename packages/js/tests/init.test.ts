@@ -53,6 +53,56 @@ describe("init", () => {
     });
 
     expect(fetchMock).toHaveBeenCalled();
+    const body = JSON.parse(
+      (fetchMock.mock.calls[0][1] as RequestInit).body as string,
+    ) as Record<string, string>;
+    expect(body.api_key).toBe("fr_test");
+    expect(body.message).toBe("hello");
+    expect(body._gotcha).toBe("");
+    expect(body._ts).toMatch(/^\d+$/);
+    expect(Number(body._ts)).toBeGreaterThan(0);
+  });
+
+  it("injects spam fields when form exists before init", async () => {
+    const fetchMock = vi.fn().mockResolvedValue({
+      status: 200,
+      json: async () => ({
+        status: "success",
+        data: {
+          ok: true,
+          id: "33333333-3333-3333-3333-333333333333",
+          redirectUrl: null,
+        },
+        meta: { requestId: "req" },
+      }),
+    });
+    vi.stubGlobal("fetch", fetchMock);
+
+    document.body.innerHTML = `
+      <form data-formsreach id="early">
+        <input name="message" value="early" />
+        <button type="submit">Go</button>
+      </form>
+    `;
+    init({ apiKey: "fr_early" });
+
+    const form = document.getElementById("early") as HTMLFormElement;
+    expect(form.querySelector('[name="_gotcha"]')).toBeTruthy();
+    expect(form.querySelector('[name="_ts"]')).toBeTruthy();
+
+    form.dispatchEvent(
+      new Event("submit", { bubbles: true, cancelable: true }),
+    );
+
+    await vi.waitFor(() => {
+      expect(fetchMock).toHaveBeenCalled();
+    });
+
+    const body = JSON.parse(
+      (fetchMock.mock.calls[0][1] as RequestInit).body as string,
+    ) as Record<string, string>;
+    expect(body._gotcha).toBe("");
+    expect(body._ts).toMatch(/^\d+$/);
   });
 
   it("does not intercept forms without data-formsreach", async () => {

@@ -2,6 +2,7 @@ import { ref, type Ref } from "vue";
 import {
   submitForm,
   FormsReachClientError,
+  ensureSpamFields,
   type FormsReachError,
   type FormsReachSuccess,
 } from "@formsreach/js";
@@ -30,6 +31,8 @@ function formDataToRecord(form: HTMLFormElement): Record<string, string> {
 
 /**
  * Vue / Nuxt composable. Matches the FormsReach dashboard snippet API.
+ *
+ * Spam protection (`_gotcha` + `_ts`) is injected automatically on submit.
  */
 export function useFormsReach(
   apiKeyOrOptions: string | UseFormsReachOptions,
@@ -40,6 +43,7 @@ export function useFormsReach(
       : apiKeyOrOptions;
 
   const submitting = ref(false);
+  const mountTs = String(Date.now());
 
   function submit(event: Event): void {
     event.preventDefault();
@@ -48,6 +52,7 @@ export function useFormsReach(
     const form = event.target;
     if (!(form instanceof HTMLFormElement)) return;
 
+    ensureSpamFields(form, { ts: mountTs });
     const data = formDataToRecord(form);
     submitting.value = true;
 
