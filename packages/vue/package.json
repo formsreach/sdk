@@ -1,6 +1,6 @@
 {
   "name": "@formsreach/vue",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "FormsReach Vue / Nuxt SDK",
   "license": "MIT",
   "type": "module",

@@ -1,5 +1,11 @@
 # @formsreach/js
 
+## 0.2.0
+
+### Minor Changes
+
+- 2820d75: Auto-inject honeypot (`_gotcha`) and time-trap (`_ts`) for CDN and framework submits. Export `ensureSpamFields`. Programmatic `submitForm` still skips inventing `_ts`.
+
 ## 0.1.2
 
 ### Patch Changes
