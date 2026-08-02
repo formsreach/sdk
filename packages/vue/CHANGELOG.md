@@ -1,5 +1,23 @@
 # @formsreach/vue
 
+## 0.3.0
+
+### Minor Changes
+
+- 452f069: Bake the submit endpoint into the SDK and stop exposing it
+
+  All requests now go to `https://app.formsreach.com/api/v1/submit`, which is fixed inside `@formsreach/js`.
+
+  **Breaking:**
+
+  - Removed the `endpoint` option from `FormsReach.init`, `submitForm`, and `useFormsReach` (React and Vue).
+  - Removed the `DEFAULT_ENDPOINT` export from `@formsreach/js`.
+
+### Patch Changes
+
+- Updated dependencies [452f069]
+  - @formsreach/js@0.3.0
+
 ## 0.2.0
 
 ### Minor Changes
