@@ -68,7 +68,6 @@ async function handleSubmit(event: Event): Promise<void> {
     const data = formToPayload(form, config.apiKey);
     const result = await submitForm({
       apiKey: config.apiKey,
-      endpoint: config.endpoint,
       data,
     });
 

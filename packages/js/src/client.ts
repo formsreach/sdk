@@ -1,5 +1,5 @@
 import {
-  DEFAULT_ENDPOINT,
+  SUBMIT_ENDPOINT,
   type FormsReachError,
   type FormsReachSuccess,
   type SubmitFormOptions,
@@ -64,12 +64,11 @@ function fromFailure(
 export async function submitForm(
   options: SubmitFormOptions,
 ): Promise<FormsReachSuccess> {
-  const endpoint = options.endpoint ?? DEFAULT_ENDPOINT;
   const payload = withSubmitMeta(options.data, options.apiKey);
 
   let res: Response;
   try {
-    res = await fetch(endpoint, {
+    res = await fetch(SUBMIT_ENDPOINT, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

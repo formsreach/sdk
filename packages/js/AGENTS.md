@@ -45,7 +45,6 @@ import { FormsReach, init, submitForm } from "@formsreach/js";
 
 FormsReach.init({
   apiKey: "fr_…",
-  // endpoint?: string — default https://formsreach.com/api/v1/submit
   onSuccess: ({ id, redirectUrl }) => {},
   onError: (err) => {},
 });
@@ -63,7 +62,6 @@ try {
   const { id, redirectUrl } = await submitForm({
     apiKey: "fr_…",
     data: { name: "Ada", email: "ada@example.com" },
-    // endpoint?: string
   });
 } catch (e) {
   if (e instanceof FormsReachClientError) {
@@ -84,28 +82,25 @@ Field values must be strings (`Record<string, string>`). File uploads are **not*
 | `ensureSpamFields(form, opts?)` | function | Injects empty `_gotcha` + once-set `_ts` into the form DOM (idempotent).                  |
 | `FormsReach`                    | object   | `{ init, submitForm }` — also default export.                                             |
 | `FormsReachClientError`         | class    | `error.formsreach` holds normalized error payload.                                        |
-| `DEFAULT_ENDPOINT`              | const    | `https://formsreach.com/api/v1/submit`                                                    |
 | `FORM_ATTR`                     | const    | `data-formsreach`                                                                         |
 | `EVENT_SUCCESS` / `EVENT_ERROR` | const    | DOM event names (see below)                                                               |
 
 ### `FormsReachInitOptions`
 
 - `apiKey: string` (required)
-- `endpoint?: string`
 - `onSuccess?: (result: { id: string; redirectUrl: string \| null }) => void`
 - `onError?: (error: FormsReachError) => void`
 
 ### `SubmitFormOptions`
 
 - `apiKey: string`
-- `endpoint?: string`
 - `data: Record<string, string>`
 
 ## Backend contract (do not invent alternatives)
 
-- `POST` to endpoint (default above)
+- `POST` to the fixed FormsReach endpoint `https://app.formsreach.com/api/v1/submit` (baked into the SDK; not configurable)
 - Body JSON: form fields + `api_key` + `_gotcha` (non-empty → silent spam) + `_ts` (render ms; too fast → silent spam; missing skips)
-- `init` / React / Vue auto-inject `_gotcha` + `_ts` via `ensureSpamFields`. Raw HTML POST without the SDK must include both in markup.
+- `init` / React / Vue auto-inject `_gotcha` + `_ts` via `ensureSpamFields`. Raw HTML POST without the SDK must include both in markup, and posts to a different host: `https://api.formsreach.com/submit`.
 - Programmatic `submitForm({ data })` without a form does not invent `_ts` (server skips time-trap).
 - Success envelope: `{ status: "success", data: { ok: true, id, redirectUrl }, meta: { requestId } }`
 - Failure envelope: `{ status: "failure", data: null, error: Problem, meta }`
@@ -129,7 +124,7 @@ Field values must be strings (`Record<string, string>`). File uploads are **not*
 
 - Rename CDN file, `FormsReach` global, or `data-formsreach` without a major version + product snippet update
 - Ship or document file-upload fields until the product API supports them
-- Point at a non-FormsReach submit API unless the user explicitly overrides `endpoint` for self-host/testing
+- Add an `endpoint` / `baseUrl` option back — the submit URL is intentionally fixed and not part of the public API
 - Put dashboard or server code in the client
 
 ## Related packages

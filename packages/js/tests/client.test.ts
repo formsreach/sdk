@@ -35,7 +35,7 @@ describe("submitForm", () => {
     });
 
     expect(fetch).toHaveBeenCalledWith(
-      "https://formsreach.com/api/v1/submit",
+      "https://app.formsreach.com/api/v1/submit",
       expect.objectContaining({
         method: "POST",
         headers: expect.objectContaining({

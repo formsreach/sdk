@@ -9,7 +9,6 @@ import {
 
 export type UseFormsReachOptions = {
   apiKey: string;
-  endpoint?: string;
   onSuccess?: (result: FormsReachSuccess) => void;
   onError?: (error: FormsReachError) => void;
 };
@@ -46,7 +45,7 @@ export function useFormsReach(
       ? { apiKey: apiKeyOrOptions }
       : apiKeyOrOptions;
 
-  const { apiKey, endpoint, onSuccess, onError } = options;
+  const { apiKey, onSuccess, onError } = options;
   const [submitting, setSubmitting] = useState(false);
   const mountTs = useRef(String(Date.now()));
 
@@ -62,7 +61,6 @@ export function useFormsReach(
       setSubmitting(true);
       void submitForm({
         apiKey,
-        endpoint,
         data,
       })
         .then((result) => {
@@ -87,7 +85,7 @@ export function useFormsReach(
           setSubmitting(false);
         });
     },
-    [apiKey, endpoint, onSuccess, onError, submitting],
+    [apiKey, onSuccess, onError, submitting],
   );
 
   return { submit, submitting };

@@ -37,7 +37,6 @@ Optional options object:
 ```ts
 const { submit, submitting } = useFormsReach({
   apiKey: "fr_…",
-  // endpoint?: string
   onSuccess: ({ id, redirectUrl }) => {},
   onError: (err) => {},
 });
@@ -49,12 +48,13 @@ const { submit, submitting } = useFormsReach({
 
 **Argument:** `string` (api key) **or** `UseFormsReachOptions`:
 
-| Field       | Type                                  | Notes                                    |
-| ----------- | ------------------------------------- | ---------------------------------------- |
-| `apiKey`    | `string`                              | Required when using the options object   |
-| `endpoint`  | `string?`                             | Defaults to FormsReach public submit URL |
-| `onSuccess` | `(result: FormsReachSuccess) => void` | Optional                                 |
-| `onError`   | `(error: FormsReachError) => void`    | Optional                                 |
+| Field       | Type                                  | Notes                                  |
+| ----------- | ------------------------------------- | -------------------------------------- |
+| `apiKey`    | `string`                              | Required when using the options object |
+| `onSuccess` | `(result: FormsReachSuccess) => void` | Optional                               |
+| `onError`   | `(error: FormsReachError) => void`    | Optional                               |
+
+The submit URL is fixed inside `@formsreach/js` and cannot be overridden.
 
 **Returns:**
 

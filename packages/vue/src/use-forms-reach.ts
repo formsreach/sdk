@@ -9,7 +9,6 @@ import {
 
 export type UseFormsReachOptions = {
   apiKey: string;
-  endpoint?: string;
   onSuccess?: (result: FormsReachSuccess) => void;
   onError?: (error: FormsReachError) => void;
 };
@@ -58,7 +57,6 @@ export function useFormsReach(
 
     void submitForm({
       apiKey: options.apiKey,
-      endpoint: options.endpoint,
       data,
     })
       .then((result) => {

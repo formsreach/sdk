@@ -2,7 +2,6 @@ export { init } from "./init";
 export { submitForm, FormsReachClientError } from "./client";
 export { ensureSpamFields, type EnsureSpamFieldsOptions } from "./spam-fields";
 export {
-  DEFAULT_ENDPOINT,
   FORM_ATTR,
   EVENT_SUCCESS,
   EVENT_ERROR,

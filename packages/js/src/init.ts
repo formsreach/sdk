@@ -16,7 +16,6 @@ export function init(options: FormsReachInitOptions): void {
 
   setConfig({
     apiKey: options.apiKey.trim(),
-    endpoint: options.endpoint,
     onSuccess: options.onSuccess,
     onError: options.onError,
   });

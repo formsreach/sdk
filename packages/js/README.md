@@ -45,6 +45,8 @@ const { id, redirectUrl } = await submitForm({
 });
 ```
 
+All requests go to `https://app.formsreach.com/api/v1/submit`. The endpoint is built into the SDK and is not configurable.
+
 ## Events
 
 After `init`, the SDK dispatches DOM events on `document`:

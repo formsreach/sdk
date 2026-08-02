@@ -63,8 +63,6 @@
 
       FormsReach.init({
         apiKey,
-        // Optional: point at local formsreach-app
-        // endpoint: "http://localhost:3000/api/v1/submit",
         onSuccess(result) {
           log.textContent = "Success: " + JSON.stringify(result, null, 2);
         },
