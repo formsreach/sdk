@@ -3,10 +3,11 @@
 [![npm @formsreach/js](https://img.shields.io/npm/v/@formsreach/js.svg)](https://www.npmjs.com/package/@formsreach/js)
 [![npm @formsreach/react](https://img.shields.io/npm/v/@formsreach/react.svg)](https://www.npmjs.com/package/@formsreach/react)
 [![npm @formsreach/vue](https://img.shields.io/npm/v/@formsreach/vue.svg)](https://www.npmjs.com/package/@formsreach/vue)
+[![npm @formsreach/node](https://img.shields.io/npm/v/@formsreach/node.svg)](https://www.npmjs.com/package/@formsreach/node)
 [![CI](https://github.com/formsreach/sdk/actions/workflows/ci.yml/badge.svg)](https://github.com/formsreach/sdk/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
 
-Official client libraries for [FormsReach](https://formsreach.com) — a form backend and form API for static sites and modern frameworks. Submit HTML, React, or Vue forms without running your own server.
+Official client libraries for [FormsReach](https://formsreach.com) — a form backend and form API for static sites and modern frameworks. Submit HTML, React, or Vue forms without running your own server; manage forms and submissions from Node.js.
 
 ## Features
 
@@ -14,16 +15,18 @@ Official client libraries for [FormsReach](https://formsreach.com) — a form ba
 - **Plain JS / ESM** — `@formsreach/js` for vanilla apps and custom UIs
 - **React & Next.js** — `useFormsReach` hook
 - **Vue & Nuxt** — `useFormsReach` composable
+- **Node.js** — `@formsreach/node` management SDK (forms & submissions)
 - **TypeScript** — published types for all packages
-- **Zero runtime deps** on the core JS SDK
+- **Zero runtime deps** on the core JS and Node SDKs
 
 ## Packages
 
-| Package                                 | Install                       | Use case                |
-| --------------------------------------- | ----------------------------- | ----------------------- |
-| [`@formsreach/js`](./packages/js)       | CDN or `npm i @formsreach/js` | Plain HTML / vanilla JS |
-| [`@formsreach/react`](./packages/react) | `npm i @formsreach/react`     | React & Next.js         |
-| [`@formsreach/vue`](./packages/vue)     | `npm i @formsreach/vue`       | Vue & Nuxt              |
+| Package                                 | Install                       | Use case                       |
+| --------------------------------------- | ----------------------------- | ------------------------------ |
+| [`@formsreach/js`](./packages/js)       | CDN or `npm i @formsreach/js` | Plain HTML / vanilla JS        |
+| [`@formsreach/react`](./packages/react) | `npm i @formsreach/react`     | React & Next.js                |
+| [`@formsreach/vue`](./packages/vue)     | `npm i @formsreach/vue`       | Vue & Nuxt                     |
+| [`@formsreach/node`](./packages/node)   | `npm i @formsreach/node`      | Node management (forms / subs) |
 
 ## Quick start
 
@@ -91,6 +94,22 @@ const { submit, submitting } = useFormsReach("fr_your_key");
 
 Full guide: [`packages/vue`](./packages/vue).
 
+### Node.js (management)
+
+```bash
+npm install @formsreach/node
+```
+
+```ts
+import { FormsReach } from "@formsreach/node";
+
+const fr = new FormsReach({ apiKey: process.env.FORMSREACH_API_KEY! });
+const { items } = await fr.forms.list();
+const page = await fr.submissions.list(items[0]!.id, { limit: 50 });
+```
+
+Uses a **developer API key** (Bearer), not the public form `fr_…` key. Full guide: [`packages/node`](./packages/node).
+
 ## Examples
 
 | Stack           | Path                                   |
@@ -100,6 +119,7 @@ Full guide: [`packages/vue`](./packages/vue).
 | Next.js         | [`examples/nextjs`](./examples/nextjs) |
 | Vue             | [`examples/vue`](./examples/vue)       |
 | Nuxt            | [`examples/nuxt`](./examples/nuxt)     |
+| Node            | [`examples/node`](./examples/node)     |
 
 ## Monorepo
 
@@ -116,8 +136,8 @@ pnpm check   # format:check + lint + typecheck + test + build (also runs on pre-
 
 - Use the GitHub issue templates for bugs and feature requests.
 - Open a PR against `main`. The PR template includes a short checklist.
-- For changes that affect published packages (`@formsreach/js`, `@formsreach/react`, `@formsreach/vue`), run `pnpm changeset`, choose a bump type, and commit the new file under `.changeset/`.
-- Packages version in **lockstep** (same version across all three).
+- For changes that affect published packages (`@formsreach/js`, `@formsreach/react`, `@formsreach/vue`, `@formsreach/node`), run `pnpm changeset`, choose a bump type, and commit the new file under `.changeset/`.
+- Browser packages (`js` / `react` / `vue`) version in **lockstep**. `@formsreach/node` versions independently.
 - See [Changesets](https://github.com/changesets/changesets) for details.
 
 Git hooks (Husky): Conventional Commits on `commit-msg`; lint-staged on `pre-commit`; full `pnpm check` on `pre-push`.
